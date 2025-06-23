@@ -11,29 +11,29 @@ namespace IncomeTaxCalculator.Server.Controllers
     public class TaxController(IMediator mediator, ILogger<TaxController> logger)
         : ControllerBase
     {
-        [HttpPost("calculate")]
-        public async Task<IActionResult> CalculateTax(TaxCalculationRequest request)
-        {
-            try
-            {
-                var command = new CalculateTaxCommand(
-                    request.AnnualIncome, 
-                    request.FilingStatus, 
-                    request.DeductionsCount);
-
-                var result = await mediator.Send(command);
-                return Ok(result);
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                logger.LogError(ex, "Error calculating tax");
-                return StatusCode(500, "An error occurred while processing your request");
-            }
-        }
+        // [HttpPost("calculate")]
+        // public async Task<IActionResult> CalculateTax(TaxCalculationRequest request)
+        // {
+        //     try
+        //     {
+        //         var command = new CalculateTaxCommand(
+        //             request.AnnualIncome, 
+        //             request.FilingStatus, 
+        //             request.DeductionsCount);
+        //
+        //         var result = await mediator.Send(command);
+        //         return Ok(result);
+        //     }
+        //     catch (ArgumentException ex)
+        //     {
+        //         return BadRequest(ex.Message);
+        //     }
+        //     catch (Exception ex)
+        //     {
+        //         logger.LogError(ex, "Error calculating tax");
+        //         return StatusCode(500, "An error occurred while processing your request");
+        //     }
+        // }
 
         [HttpGet("brackets/{filingStatus}")]
         public async Task<IActionResult> GetTaxBrackets(string filingStatus)

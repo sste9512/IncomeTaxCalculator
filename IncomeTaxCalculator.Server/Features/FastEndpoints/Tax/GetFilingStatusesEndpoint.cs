@@ -4,7 +4,7 @@ using MediatR;
 
 namespace IncomeTaxCalculator.Server.Features.FastEndpoints.Tax
 {
-    public class GetFilingStatusesEndpoint : EndpointWithoutRequest<string[]>
+    public sealed class GetFilingStatusesEndpoint : EndpointWithoutRequest<string[]>
     {
         private readonly IMediator _mediator;
 

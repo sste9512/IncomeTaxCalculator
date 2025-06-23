@@ -4,9 +4,9 @@ using IncomeTaxCalculator.Server.Models;
 
 namespace IncomeTaxCalculator.Server.Features.FastEndpoints.Tax.Mapping
 {
-    public class TaxMappings : Mapper<CalculateTaxRequest, TaxCalculationResponse, TaxCalculationRequest>
+    public sealed class TaxMappings : Mapper<TaxCalculationRequest, TaxCalculationResponse, TaxCalculationRequest>
     {
-        public override TaxCalculationRequest ToEntity(CalculateTaxRequest r) => new()
+        public override TaxCalculationRequest ToEntity(TaxCalculationRequest r) => new()
         {
             AnnualIncome = r.AnnualIncome,
             FilingStatus = r.FilingStatus,

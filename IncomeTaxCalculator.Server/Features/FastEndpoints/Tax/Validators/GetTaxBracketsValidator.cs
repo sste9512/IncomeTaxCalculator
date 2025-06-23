@@ -4,7 +4,7 @@ using IncomeTaxCalculator.Server.Features.FastEndpoints.Tax;
 
 namespace IncomeTaxCalculator.Server.Features.FastEndpoints.Tax.Validators
 {
-    public class GetTaxBracketsValidator : Validator<GetTaxBracketsRequest>
+    public sealed class GetTaxBracketsValidator : Validator<GetTaxBracketsRequest>
     {
         public GetTaxBracketsValidator()
         {

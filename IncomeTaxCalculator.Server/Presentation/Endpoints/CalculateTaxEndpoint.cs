@@ -5,15 +5,8 @@ using MediatR;
 
 namespace IncomeTaxCalculator.Server.Presentation.Endpoints;
 
-public class CalculateTaxEndpoint : Endpoint<TaxCalculationRequestDto, TaxCalculationResponseDto>
+public class CalculateTaxEndpoint(IMediator mediator) : Endpoint<TaxCalculationRequestDto, TaxCalculationResponseDto>
 {
-    private readonly IMediator _mediator;
-
-    public CalculateTaxEndpoint(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
     public override void Configure()
     {
         Post("tax/calculate");
@@ -38,7 +31,7 @@ public class CalculateTaxEndpoint : Endpoint<TaxCalculationRequestDto, TaxCalcul
                 req.GrossAnnualSalary,
                 req.TaxSystem);
 
-            var result = await _mediator.Send(command, ct);
+            var result = await mediator.Send(command, ct);
 
             if (result.IsSuccess && result.Value is not null)
             {

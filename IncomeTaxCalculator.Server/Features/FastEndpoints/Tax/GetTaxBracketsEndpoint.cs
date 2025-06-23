@@ -5,12 +5,12 @@ using MediatR;
 
 namespace IncomeTaxCalculator.Server.Features.FastEndpoints.Tax
 {
-    public record GetTaxBracketsRequest
+    public sealed record GetTaxBracketsRequest
     {
         public string FilingStatus { get; set; } = string.Empty;
     }
 
-    public class GetTaxBracketsEndpoint(IMediator mediator) : Endpoint<GetTaxBracketsRequest, List<TaxBracket>>
+    public sealed class GetTaxBracketsEndpoint(IMediator mediator) : Endpoint<GetTaxBracketsRequest, List<TaxBracket>>
     {
         public override void Configure()
         {

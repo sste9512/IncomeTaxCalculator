@@ -38,6 +38,10 @@
     </ProjectReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
+
   <!-- NSwag TypeScript client generation on build -->
   <!-- <Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
     <Message Importance="High" Text="Generating API TypeScript Client" />

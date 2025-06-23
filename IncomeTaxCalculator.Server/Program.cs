@@ -1,5 +1,7 @@
+using System.Reflection;
 using MediatR;
 using FastEndpoints;
+using Microsoft.AspNetCore.Cors;
 using FastEndpoints.Swagger;
 using Microsoft.EntityFrameworkCore;
 using IncomeTaxCalculator.Server.Application.Common.Interfaces;
@@ -14,18 +16,35 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddFastEndpoints();
 builder.Services.AddControllers();
 
-// Configure OpenAPI with NSwag and FastEndpoints.Swagger
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddOpenApiDocument(config => {
-    config.Title = "Income Tax Calculator API";
-    config.Description = "An API for calculating income tax";
-    config.Version = "v1";
+
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularDev", policy =>
+    {
+        policy.WithOrigins(
+                "http://localhost:4200",
+                "https://localhost:4200",
+                "http://localhost:57652",
+                "https://localhost:57652")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
 });
-builder.Services.SwaggerDocument();
+// Configure OpenAPI with FastEndpoints.Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.SwaggerDocument(options => {
+    options.DocumentSettings = settings => {
+        settings.Title = "Income Tax Calculator API";
+        settings.Description = "An API for calculating income tax";
+        settings.Version = "v1";
+    };
+});
 
 // Register MediatR
 builder.Services.AddMediatR(cfg => {
-    cfg.RegisterServicesFromAssembly(typeof(Program).Assembly);
+   // cfg.RegisterServicesFromAssembly(typeof(CalculateTaxCommand).Assembly);
+    cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
     // Add pipeline behaviors from Features/Common/Behaviors
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(IncomeTaxCalculator.Server.Features.Common.Behaviors.LoggingBehavior<,>));
     cfg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(IncomeTaxCalculator.Server.Features.Common.Behaviors.ValidationBehavior<,>));
@@ -60,22 +79,25 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// Configure middleware pipeline
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+
+// Enable CORS - must be before endpoints but after basic middleware
+app.UseCors("AllowAngularDev");
+
 app.UseDefaultFiles();
 app.MapStaticAssets();
 
-// Configure the HTTP request pipeline.
-// app.UseFastEndpoints(c => {
-//     c.Endpoints.RoutePrefix = "api";
-// });
+
+app.UseFastEndpoints(c => {
+    c.Endpoints.RoutePrefix = "api";
+});
 
 if (app.Environment.IsDevelopment())
 {
-    app.UseOpenApi(); // Serve OpenAPI/Swagger documents
-    app.UseSwaggerUi(); // Serve Swagger UI
     app.UseSwaggerGen(); // FastEndpoints Swagger generation
 }
-
-app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

@@ -2,6 +2,7 @@
 
 using IncomeTaxCalculator.Server.Application.Common.Models;
 using IncomeTaxCalculator.Server.Infrastructure.Data;
+using IncomeTaxCalculator.Server.Models;
 using Microsoft.EntityFrameworkCore;
 
 public sealed class MigrationManager{
@@ -13,11 +14,14 @@ public sealed class MigrationManager{
         _serviceProvider = serviceProvider;
     }
 
+     
+   
+
     public async Task<Result<bool>> ApplyMigrationsAsync()
     {
         using var scope = _serviceProvider.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<TaxCalculatorDbContext>();
-        
+
         try
         {
             // Check if database exists and can be connected to
@@ -27,7 +31,7 @@ public sealed class MigrationManager{
                 // Database doesn't exist or can't connect
                 return Result<bool>.Failure("Cannot connect to database");
             }
-            
+
             // Check if there are pending migrations
             var pendingMigrations = await dbContext.Database.GetPendingMigrationsAsync();
             if (pendingMigrations.Any())
@@ -37,7 +41,6 @@ public sealed class MigrationManager{
                 return Result<bool>.Success(true);
             }
             
-            // No migrations needed
             return Result<bool>.Success(false);
         }
         catch (Exception ex)

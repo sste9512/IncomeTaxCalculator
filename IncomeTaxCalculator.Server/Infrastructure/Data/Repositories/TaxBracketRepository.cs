@@ -22,7 +22,7 @@ public class TaxBracketRepository : ITaxBracketRepository
         {
             return await _context.TaxBrackets
                 .Where(tb => tb.TaxSystem == taxSystem)
-                .OrderBy(tb => tb.LowerLimit)
+                // .OrderBy(tb => tb.LowerLimit)
                 .AsNoTracking()
                 .ToListAsync(cancellationToken);
         }

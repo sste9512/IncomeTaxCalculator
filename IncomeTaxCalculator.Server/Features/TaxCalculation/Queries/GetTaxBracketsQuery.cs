@@ -3,10 +3,37 @@ using MediatR;
 
 namespace IncomeTaxCalculator.Server.Features.TaxCalculation.Queries
 {
-    public record GetTaxBracketsQuery(string FilingStatus) : IRequest<List<TaxBracket>>;
+    public sealed record GetTaxBracketsQuery(string FilingStatus) : IRequest<List<TaxBracket>>;
 
-    public class GetTaxBracketsQueryHandler : IRequestHandler<GetTaxBracketsQuery, List<TaxBracket>>
+    public sealed class GetTaxBracketsQueryHandler : IRequestHandler<GetTaxBracketsQuery, List<TaxBracket>>
     {
+        
+        
+        // UK Income Tax Brackets for 2023/24
+        /* 
+        Tax Band                   Annual Salary Range (£)            Tax Rate (%)
+        Tax Band A                 0 - 5000                          0
+        Tax Band B                 5000 - 20000                      20
+        Tax Band C                 20000+                            40
+        */
+
+        private List<TaxBracket> brackets = new List<TaxBracket>()
+        {
+            new TaxBracket()
+            {
+                LowerLimit = 0, UpperLimit = 5000, Rate = 0
+            },
+            new TaxBracket()
+            {
+                LowerLimit = 5000, UpperLimit = 20000, Rate = .2m
+            },
+            new TaxBracket()
+            {
+                LowerLimit = 20000, UpperLimit = decimal.MaxValue, Rate = .4m
+            },
+        };
+
+
         public Task<List<TaxBracket>> Handle(GetTaxBracketsQuery request, CancellationToken cancellationToken)
         {
             // In a real app, this would come from a database or configuration

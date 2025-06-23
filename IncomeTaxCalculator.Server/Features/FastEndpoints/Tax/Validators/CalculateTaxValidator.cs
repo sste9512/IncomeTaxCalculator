@@ -1,10 +1,11 @@
 ﻿using FastEndpoints;
 using FluentValidation;
 using IncomeTaxCalculator.Server.Features.FastEndpoints.Tax;
+using IncomeTaxCalculator.Server.Models;
 
 namespace IncomeTaxCalculator.Server.Features.FastEndpoints.Tax.Validators
 {
-    public class CalculateTaxValidator : Validator<CalculateTaxRequest>
+    public sealed class CalculateTaxValidator : Validator<TaxCalculationRequest>
     {
         public CalculateTaxValidator()
         {
