@@ -1,0 +1,82 @@
+﻿<div class="container">
+  <h1>{{ title }}</h1>
+
+  <!-- Salary Entry Form -->
+  <div class="calculation-form">
+    <form [formGroup]="taxForm" (ngSubmit)="onCalculate()">
+      <div class="form-row">
+        <label for="grossAnnualSalary">Gross Annual Salary:</label>
+        <input 
+          type="number" 
+          id="grossAnnualSalary"
+          formControlName="grossAnnualSalary"
+          placeholder="Enter salary amount"
+          [class.error]="taxForm.get('grossAnnualSalary')?.invalid && taxForm.get('grossAnnualSalary')?.touched"
+        />
+        <button 
+          type="submit" 
+          class="calc-button"
+          [disabled]="isLoading"
+        >
+          {{ isLoading ? 'Calculating...' : 'Calc' }}
+        </button>
+      </div>
+    </form>
+    
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+  </div>
+
+  <!-- Results Display -->
+  <div *ngIf="taxResult" class="results-section">
+    <h2>Tax Calculation Results</h2>
+    
+    <div class="results-grid">
+      <div class="result-item">
+        <label>Gross Annual Salary:</label>
+        <span class="amount">{{ formatCurrency(taxResult.grossAnnualSalary) }}</span>
+      </div>
+      
+      <div class="result-item">
+        <label>Gross Monthly Salary:</label>
+        <span class="amount">{{ formatCurrency(taxResult.monthlyGrossSalary) }}</span>
+      </div>
+      
+      <div class="result-item">
+        <label>Net Annual Salary:</label>
+        <span class="amount">{{ formatCurrency(taxResult.netAnnualSalary) }}</span>
+      </div>
+      
+      <div class="result-item">
+        <label>Net Monthly Salary:</label>
+        <span class="amount">{{ formatCurrency(taxResult.monthlyNetSalary) }}</span>
+      </div>
+      
+      <div class="result-item">
+        <label>Annual Tax Paid:</label>
+        <span class="amount">{{ formatCurrency(taxResult.annualTaxAmount) }}</span>
+      </div>
+      
+      <div class="result-item">
+        <label>Monthly Tax Paid:</label>
+        <span class="amount">{{ formatCurrency(taxResult.monthlyTaxAmount) }}</span>
+      </div>
+    </div>
+
+    <!-- Tax Band Breakdown -->
+    <div *ngIf="taxResult.bracketBreakdown.length > 0" class="breakdown-section">
+      <h3>Tax Band Breakdown</h3>
+      <div class="breakdown-list">
+        <div *ngFor="let bracket of taxResult.bracketBreakdown" class="breakdown-item">
+          <span class="band-name">{{ bracket.bandName }}:</span>
+          <span class="band-details">
+            {{ formatCurrency(bracket.taxableAmount) }} at {{ bracket.ratePercentage }}% = 
+            {{ formatCurrency(bracket.taxAmount) }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

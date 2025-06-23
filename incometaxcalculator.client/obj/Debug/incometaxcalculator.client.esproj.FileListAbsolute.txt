@@ -1,0 +1,1 @@
+C:\Users\steve\source\repos\IncomeTaxCalculator\incometaxcalculator.client\obj\Debug\incometaxcalculator.client.esproj.CoreCompileInputs.cache

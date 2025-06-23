@@ -1,0 +1,5 @@
+﻿# Ignore generated TypeScript client file
+*.ts
+
+# But do not ignore .gitignore itself
+!.gitignore

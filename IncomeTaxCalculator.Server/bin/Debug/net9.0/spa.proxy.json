@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:57652",
+"RedirectUrl": "",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\IncomeTaxCalculator.Server\\..\\incometaxcalculator.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

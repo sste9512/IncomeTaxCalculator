@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\IncomeTaxCalculator.Server.props" />
+</Project>

@@ -1,0 +1,34 @@
+/* Global styles for the UK Income Tax Calculator */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Remove default button focus outline and add custom one */
+button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Ensure consistent input styling */
+input {
+  font-family: inherit;
+}
+
+/* Remove default form spacing */
+form {
+  margin: 0;
+}

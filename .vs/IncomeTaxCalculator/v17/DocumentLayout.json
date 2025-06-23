@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2A57297F-5A45-4C13-A5D3-86A165E19C79}|incometaxcalculator.client\\incometaxcalculator.client.esproj|c:\\users\\steve\\source\\repos\\incometaxcalculator\\incometaxcalculator.client\\src\\app\\app.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{2A57297F-5A45-4C13-A5D3-86A165E19C79}|incometaxcalculator.client\\incometaxcalculator.client.esproj|solutionrelative:incometaxcalculator.client\\src\\app\\app.component.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{87CA0326-4EC6-4E98-815D-766C49A36E0B}|IncomeTaxCalculator.Server\\IncomeTaxCalculator.Server.csproj|c:\\users\\steve\\source\\repos\\incometaxcalculator\\incometaxcalculator.server\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{87CA0326-4EC6-4E98-815D-766C49A36E0B}|IncomeTaxCalculator.Server\\IncomeTaxCalculator.Server.csproj|solutionrelative:incometaxcalculator.server\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "app.component.ts",
+              "DocumentMoniker": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\incometaxcalculator.client\\src\\app\\app.component.ts",
+              "RelativeDocumentMoniker": "incometaxcalculator.client\\src\\app\\app.component.ts",
+              "ToolTip": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\incometaxcalculator.client\\src\\app\\app.component.ts",
+              "RelativeToolTip": "incometaxcalculator.client\\src\\app\\app.component.ts",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-06-21T19:55:07.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\IncomeTaxCalculator.Server\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "IncomeTaxCalculator.Server\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\steve\\source\\repos\\IncomeTaxCalculator\\IncomeTaxCalculator.Server\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "IncomeTaxCalculator.Server\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-21T19:55:00.39Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

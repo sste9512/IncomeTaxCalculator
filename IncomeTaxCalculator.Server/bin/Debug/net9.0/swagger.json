@@ -1,0 +1,10 @@
+﻿{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Income Tax Calculator API",
+    "description": "An API for calculating income tax",
+    "version": "1.0.0"
+  },
+  "paths": {},
+  "components": {}
+}
